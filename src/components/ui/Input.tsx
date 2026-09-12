@@ -45,6 +45,8 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
             ref={ref}
             id={id}
             type={inputType}
+            aria-invalid={error ? true : undefined}
+            aria-describedby={error && id ? `${id}-error` : undefined}
             className={`w-full rounded-xl border border-neutral-700 bg-neutral-800/60 py-3 text-sm text-neutral-100 placeholder:text-neutral-500 outline-none transition-all duration-200 focus:border-violet-500 focus:ring-2 focus:ring-violet-500/30 hover:border-neutral-600 ${
               Icon ? "pl-11" : "pl-4"
             } ${isPassword ? "pr-11" : "pr-4"} ${
@@ -68,7 +70,11 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
             </button>
           )}
         </div>
-        {error && <p className="mt-1.5 text-sm text-red-500">{error}</p>}
+        {error && (
+          <p id={id ? `${id}-error` : undefined} className="mt-1.5 text-sm text-red-500">
+            {error}
+          </p>
+        )}
       </div>
     );
   }
