@@ -15,7 +15,10 @@
     "signingIn": "Signing in...",
     "orRegisterWith": "Or register with",
     "noAccount": "Don't have an account?",
-    "signUp": "Sign up"
+    "signUp": "Sign up",
+    "invalidCredentials": "Incorrect email or password",
+    "networkError": "Could not reach the server. Check that the API is running",
+    "genericError": "Something went wrong signing in. Please try again"
   },
   "SocialButton": {
     "continueWith": "Continue with {provider}"

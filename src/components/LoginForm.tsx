@@ -3,23 +3,38 @@
 import { Lock, Mail } from "lucide-react";
 import { useTranslations } from "next-intl";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { useState, type FormEvent } from "react";
 import Button from "@/components/ui/Button";
 import Input from "@/components/ui/Input";
 import SocialButton from "@/components/ui/SocialButton";
+import { useLogin, type LoginErrorReason } from "@/hooks/useLogin";
+
+function errorMessageKey(reason: LoginErrorReason): string {
+  switch (reason) {
+    case "invalid-credentials":
+      return "invalidCredentials";
+    case "network":
+      return "networkError";
+    default:
+      return "genericError";
+  }
+}
 
 export default function LoginForm() {
   const t = useTranslations("LoginForm");
+  const router = useRouter();
+  const { login, isLoading, errorReason } = useLogin();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [isLoading, setIsLoading] = useState(false);
 
-  function handleSubmit(event: FormEvent<HTMLFormElement>) {
+  async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
-    setIsLoading(true);
 
-    // Simulated request delay; replace with a real authentication call.
-    setTimeout(() => setIsLoading(false), 1200);
+    const success = await login(email, password);
+    if (success) {
+      router.push("/dashboard");
+    }
   }
 
   return (
@@ -30,7 +45,7 @@ export default function LoginForm() {
         </h2>
         <p className="mt-2 text-sm text-neutral-400">{t("subtitle")}</p>
 
-        <form className="mt-8 space-y-5" onSubmit={handleSubmit}>
+        <form className="mt-8 space-y-5" onSubmit={handleSubmit} noValidate>
           <Input
             id="email"
             label={t("emailLabel")}
@@ -64,6 +79,12 @@ export default function LoginForm() {
               </Link>
             </div>
           </div>
+
+          {errorReason && (
+            <p role="alert" className="text-sm text-red-500">
+              {t(errorMessageKey(errorReason))}
+            </p>
+          )}
 
           <Button type="submit" isLoading={isLoading}>
             {isLoading ? t("signingIn") : t("signIn")}
