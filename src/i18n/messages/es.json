@@ -33,6 +33,8 @@
     "title": "Panel de usuario",
     "openMenu": "Abrir menú",
     "mainNav": "Navegación principal",
+    "logout": "Cerrar sesión",
+    "loggingOut": "Cerrando sesión...",
     "nav": {
       "home": "Inicio",
       "files": "Archivos",

@@ -33,6 +33,8 @@
     "title": "User dashboard",
     "openMenu": "Open menu",
     "mainNav": "Main navigation",
+    "logout": "Log out",
+    "loggingOut": "Logging out...",
     "nav": {
       "home": "Home",
       "files": "Files",
