@@ -1,12 +1,6 @@
 import "server-only";
+import { API_BASE_URL } from "@/lib/api/config";
 import type { LoginCredentials } from "./loginSchema";
-
-/**
- * Base URL of the local NestJS auth API.
- * Configure via `AUTH_API_URL` in `.env.local` to match the port your
- * NestJS instance is running on. Defaults to the common local dev port.
- */
-const AUTH_API_URL = process.env.AUTH_API_URL ?? "http://localhost:3001";
 
 /** Shape returned by the NestJS backend on a successful login. */
 interface NestLoginResponse {
@@ -40,7 +34,7 @@ export async function loginWithCredentials(
   let response: Response;
 
   try {
-    response = await fetch(`${AUTH_API_URL}/auth/login`, {
+    response = await fetch(`${API_BASE_URL}/auth/login`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(credentials),
