@@ -1,4 +1,7 @@
+"use client";
+
 import { Apple } from "lucide-react";
+import { useTranslations } from "next-intl";
 import type { ButtonHTMLAttributes } from "react";
 
 export type SocialProvider = "google" | "apple";
@@ -35,13 +38,14 @@ export default function SocialButton({
   className = "",
   ...rest
 }: SocialButtonProps) {
+  const t = useTranslations("SocialButton");
   const label = provider === "google" ? "Google" : "Apple";
 
   return (
     <button
       type="button"
       className={`flex w-full items-center justify-center gap-2 rounded-xl border border-neutral-700 bg-neutral-800/40 px-4 py-3 text-sm font-medium text-neutral-200 transition-all duration-200 hover:border-neutral-600 hover:bg-neutral-800 focus:outline-none focus:ring-2 focus:ring-violet-500/40 active:scale-[0.98] ${className}`}
-      aria-label={`Continue with ${label}`}
+      aria-label={t("continueWith", { provider: label })}
       {...rest}
     >
       {provider === "google" ? (

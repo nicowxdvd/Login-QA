@@ -1,0 +1,30 @@
+{
+  "Banner": {
+    "backToWebsite": "Back to website",
+    "title": "Capturing Moments, Creating Memories",
+    "subtitle": "A collection of textures, tones, and stories worth remembering.",
+    "carouselLabel": "Carousel slides"
+  },
+  "LoginForm": {
+    "welcomeBack": "Welcome back",
+    "subtitle": "Enter your credentials to access your account.",
+    "emailLabel": "Email",
+    "passwordLabel": "Password",
+    "forgotPassword": "Forgot password?",
+    "signIn": "Sign in",
+    "signingIn": "Signing in...",
+    "orRegisterWith": "Or register with",
+    "noAccount": "Don't have an account?",
+    "signUp": "Sign up"
+  },
+  "SocialButton": {
+    "continueWith": "Continue with {provider}"
+  },
+  "LanguageSwitcher": {
+    "label": "Language"
+  },
+  "Common": {
+    "showPassword": "Show password",
+    "hidePassword": "Hide password"
+  }
+}

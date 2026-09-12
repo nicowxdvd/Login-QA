@@ -1,0 +1,30 @@
+{
+  "Banner": {
+    "backToWebsite": "Volver al sitio web",
+    "title": "Capturando Momentos, Creando Recuerdos",
+    "subtitle": "Una colección de texturas, tonos e historias que vale la pena recordar.",
+    "carouselLabel": "Diapositivas del carrusel"
+  },
+  "LoginForm": {
+    "welcomeBack": "Bienvenido de nuevo",
+    "subtitle": "Ingresa tus credenciales para acceder a tu cuenta.",
+    "emailLabel": "Correo electrónico",
+    "passwordLabel": "Contraseña",
+    "forgotPassword": "¿Olvidaste tu contraseña?",
+    "signIn": "Iniciar sesión",
+    "signingIn": "Iniciando sesión...",
+    "orRegisterWith": "O regístrate con",
+    "noAccount": "¿No tienes una cuenta?",
+    "signUp": "Regístrate"
+  },
+  "SocialButton": {
+    "continueWith": "Continuar con {provider}"
+  },
+  "LanguageSwitcher": {
+    "label": "Idioma"
+  },
+  "Common": {
+    "showPassword": "Mostrar contraseña",
+    "hidePassword": "Ocultar contraseña"
+  }
+}

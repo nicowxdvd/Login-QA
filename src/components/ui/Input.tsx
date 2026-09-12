@@ -1,6 +1,7 @@
 "use client";
 
 import { Eye, EyeOff, type LucideIcon } from "lucide-react";
+import { useTranslations } from "next-intl";
 import { forwardRef, useState, type InputHTMLAttributes } from "react";
 
 export interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
@@ -19,6 +20,7 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
     { icon: Icon, label, isPassword = false, error, className = "", type, id, ...rest },
     ref
   ) => {
+    const t = useTranslations("Common");
     const [showPassword, setShowPassword] = useState(false);
     const inputType = isPassword ? (showPassword ? "text" : "password") : type;
 
@@ -55,7 +57,7 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
               type="button"
               onClick={() => setShowPassword((prev) => !prev)}
               className="absolute right-3.5 text-neutral-500 transition-colors duration-200 hover:text-neutral-300"
-              aria-label={showPassword ? "Hide password" : "Show password"}
+              aria-label={showPassword ? t("hidePassword") : t("showPassword")}
               tabIndex={-1}
             >
               {showPassword ? (

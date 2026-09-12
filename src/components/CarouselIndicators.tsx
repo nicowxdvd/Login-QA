@@ -3,14 +3,17 @@ export interface CarouselIndicatorsProps {
   total: number;
   /** Index of the currently active slide. */
   activeIndex: number;
+  /** Accessible label for the indicator group. */
+  label: string;
 }
 
 export default function CarouselIndicators({
   total,
   activeIndex,
+  label,
 }: CarouselIndicatorsProps) {
   return (
-    <div className="flex items-center gap-2" role="tablist" aria-label="Carousel slides">
+    <div className="flex items-center gap-2" role="tablist" aria-label={label}>
       {Array.from({ length: total }).map((_, index) => {
         const isActive = index === activeIndex;
         return (
