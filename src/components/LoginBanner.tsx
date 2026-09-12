@@ -1,8 +1,7 @@
 "use client";
 
-import { ArrowLeft, Aperture } from "lucide-react";
+import { Aperture } from "lucide-react";
 import { useTranslations } from "next-intl";
-import Link from "next/link";
 import CarouselIndicators from "./CarouselIndicators";
 import TechIllustration from "./TechIllustration";
 
@@ -20,18 +19,9 @@ export default function LoginBanner() {
         aria-hidden="true"
       />
 
-      <div className="relative flex items-center justify-between">
-        <div className="flex items-center gap-2">
-          <Aperture className="h-7 w-7 text-violet-400" aria-hidden="true" />
-          <span className="text-lg font-semibold tracking-tight">Lumina</span>
-        </div>
-        <Link
-          href="/"
-          className="flex items-center gap-1.5 text-sm text-neutral-300 transition-all duration-200 hover:text-white"
-        >
-          <ArrowLeft className="h-4 w-4" aria-hidden="true" />
-          {t("backToWebsite")}
-        </Link>
+      <div className="relative flex items-center gap-2">
+        <Aperture className="h-7 w-7 text-violet-400" aria-hidden="true" />
+        <span className="text-lg font-semibold tracking-tight">Lumina</span>
       </div>
 
       <div className="relative flex flex-1 items-center justify-center">
