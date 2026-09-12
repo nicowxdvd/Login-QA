@@ -6,7 +6,7 @@ import {
   registerSchema,
   type RegisterFieldErrors,
 } from "@/lib/users/registerSchema";
-import { createUser, getRoles, UsersApiError } from "@/lib/users/usersApiClient";
+import { createUser, UsersApiError } from "@/lib/users/usersApiClient";
 
 export type RegisterFormError = "network" | "apiValidation" | "generic";
 
@@ -21,8 +21,8 @@ export interface RegisterFormState {
 
 /**
  * Server Action behind the register form. Re-validates everything on the
- * server (client checks can be bypassed), makes sure the chosen role is
- * active, and forwards only whitelisted fields to `POST /users`.
+ * server (client checks can be bypassed) and forwards only whitelisted
+ * fields to `POST /users`.
  */
 export async function registerUserAction(
   _previousState: RegisterFormState,
@@ -40,17 +40,10 @@ export async function registerUserAction(
   const data = registerSchema.parse(input);
 
   try {
-    const roles = await getRoles();
-    const role = roles.find(({ id }) => id === data.roleId);
-    if (!role?.isActive) {
-      return { status: "error", fieldErrors: { roleId: "roleUnavailable" } };
-    }
-
     await createUser({
       email: data.email,
       firstName: data.firstName,
       lastName: data.lastName,
-      roleId: data.roleId,
       password: data.password,
     });
 

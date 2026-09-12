@@ -12,7 +12,6 @@ export const REGISTER_FIELDS = [
   "firstName",
   "lastName",
   "email",
-  "roleId",
   "password",
   "confirmPassword",
 ] as const;
@@ -43,10 +42,6 @@ export const registerSchema = z.object({
     .min(1, "emailRequired")
     .max(254, "emailMax")
     .email("emailInvalid"),
-  roleId: z.coerce
-    .number({ invalid_type_error: "roleRequired" })
-    .int("roleRequired")
-    .min(1, "roleRequired"),
   password: z
     .string()
     .min(1, "passwordRequired")

@@ -1,14 +1,6 @@
 import "server-only";
 import { API_BASE_URL } from "@/lib/api/config";
 
-/** Role as returned by the NestJS `GET /roles` endpoint. */
-export interface Role {
-  id: number;
-  name: string;
-  description: string;
-  isActive: boolean;
-}
-
 /** User as returned by the NestJS `POST /users` endpoint. */
 export interface User {
   id: string;
@@ -25,7 +17,6 @@ export interface CreateUserPayload {
   email: string;
   firstName: string;
   lastName: string;
-  roleId: number;
   password: string;
 }
 
@@ -51,23 +42,6 @@ async function request(path: string, init?: RequestInit): Promise<Response> {
       502
     );
   }
-}
-
-/** Calls the NestJS `GET /roles` endpoint. */
-export async function getRoles(): Promise<Role[]> {
-  const response = await request("/roles");
-
-  if (!response.ok) {
-    throw new UsersApiError("Roles service returned an error", response.status);
-  }
-
-  const data: unknown = await response.json();
-
-  if (!Array.isArray(data)) {
-    throw new UsersApiError("Roles service returned an unexpected response", 502);
-  }
-
-  return data as Role[];
 }
 
 /** Calls the NestJS `POST /users` endpoint. */
