@@ -14,7 +14,10 @@
     "signingIn": "Iniciando sesión...",
     "orRegisterWith": "O regístrate con",
     "noAccount": "¿No tienes una cuenta?",
-    "signUp": "Regístrate"
+    "signUp": "Regístrate",
+    "invalidCredentials": "Correo o contraseña incorrectos",
+    "networkError": "No se pudo conectar con el servidor. Verifica que la API esté corriendo",
+    "genericError": "Ocurrió un error al iniciar sesión. Intenta de nuevo"
   },
   "SocialButton": {
     "continueWith": "Continuar con {provider}"
