@@ -4,6 +4,7 @@ import { ArrowLeft, Aperture } from "lucide-react";
 import { useTranslations } from "next-intl";
 import Link from "next/link";
 import CarouselIndicators from "./CarouselIndicators";
+import TechIllustration from "./TechIllustration";
 
 export default function LoginBanner() {
   const t = useTranslations("Banner");
@@ -31,6 +32,10 @@ export default function LoginBanner() {
           <ArrowLeft className="h-4 w-4" aria-hidden="true" />
           {t("backToWebsite")}
         </Link>
+      </div>
+
+      <div className="relative flex flex-1 items-center justify-center">
+        <TechIllustration />
       </div>
 
       <div className="relative animate-fade-slide space-y-4">
