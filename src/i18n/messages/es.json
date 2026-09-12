@@ -28,5 +28,44 @@
   "Common": {
     "showPassword": "Mostrar contraseña",
     "hidePassword": "Ocultar contraseña"
+  },
+  "Dashboard": {
+    "title": "Panel de usuario",
+    "openMenu": "Abrir menú",
+    "mainNav": "Navegación principal",
+    "nav": {
+      "home": "Inicio",
+      "files": "Archivos",
+      "messages": "Mensajes",
+      "notifications": "Notificaciones",
+      "location": "Ubicación",
+      "stats": "Estadísticas"
+    },
+    "stats": {
+      "earning": "Ganancias",
+      "share": "Compartidos",
+      "likes": "Me gusta",
+      "rating": "Valoración"
+    },
+    "results": {
+      "title": "Resultados",
+      "chartLabel": "Gráfico de barras de resultados mensuales 2025 y 2026",
+      "months": ["ENE", "FEB", "MAR", "ABR", "MAY", "JUN", "JUL", "AGO", "SEP"]
+    },
+    "trend": {
+      "seriesA": "Visitas",
+      "seriesB": "Conversiones",
+      "chartLabel": "Gráfico de área con la tendencia de visitas y conversiones"
+    },
+    "calendar": {
+      "label": "Calendario de septiembre 2026",
+      "weekdays": ["D", "L", "M", "M", "J", "V", "S"]
+    },
+    "progress": {
+      "title": "Objetivo mensual",
+      "chartLabel": "45% del objetivo mensual completado",
+      "items": ["Nuevos usuarios", "Sesiones activas", "Tareas completadas", "Reportes enviados"]
+    },
+    "checkNow": "Ver ahora"
   }
 }

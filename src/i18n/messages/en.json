@@ -28,5 +28,44 @@
   "Common": {
     "showPassword": "Show password",
     "hidePassword": "Hide password"
+  },
+  "Dashboard": {
+    "title": "User dashboard",
+    "openMenu": "Open menu",
+    "mainNav": "Main navigation",
+    "nav": {
+      "home": "Home",
+      "files": "Files",
+      "messages": "Messages",
+      "notifications": "Notifications",
+      "location": "Location",
+      "stats": "Statistics"
+    },
+    "stats": {
+      "earning": "Earnings",
+      "share": "Shares",
+      "likes": "Likes",
+      "rating": "Rating"
+    },
+    "results": {
+      "title": "Results",
+      "chartLabel": "Bar chart of monthly results for 2025 and 2026",
+      "months": ["JAN", "FEB", "MAR", "APR", "MAY", "JUN", "JUL", "AUG", "SEP"]
+    },
+    "trend": {
+      "seriesA": "Visits",
+      "seriesB": "Conversions",
+      "chartLabel": "Area chart showing the visits and conversions trend"
+    },
+    "calendar": {
+      "label": "September 2026 calendar",
+      "weekdays": ["S", "M", "T", "W", "T", "F", "S"]
+    },
+    "progress": {
+      "title": "Monthly goal",
+      "chartLabel": "45% of the monthly goal completed",
+      "items": ["New users", "Active sessions", "Completed tasks", "Reports sent"]
+    },
+    "checkNow": "Check now"
   }
 }
