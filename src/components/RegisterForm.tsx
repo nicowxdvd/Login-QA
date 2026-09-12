@@ -1,6 +1,6 @@
 "use client";
 
-import { CheckCircle2, Lock, Mail, ShieldCheck, UserRound } from "lucide-react";
+import { CheckCircle2, Lock, Mail, UserRound } from "lucide-react";
 import { useTranslations } from "next-intl";
 import Link from "next/link";
 import {
@@ -15,13 +15,11 @@ import {
 } from "@/app/register/actions";
 import Button from "@/components/ui/Button";
 import Input from "@/components/ui/Input";
-import Select from "@/components/ui/Select";
 import {
   getRegisterFieldErrors,
   REGISTER_FIELDS,
   type RegisterField,
 } from "@/lib/users/registerSchema";
-import type { Role } from "@/lib/users/usersApiClient";
 
 type FormValues = Record<RegisterField, string>;
 
@@ -29,20 +27,13 @@ const INITIAL_VALUES: FormValues = {
   firstName: "",
   lastName: "",
   email: "",
-  roleId: "",
   password: "",
   confirmPassword: "",
 };
 
 const INITIAL_STATE: RegisterFormState = { status: "idle" };
 
-interface RegisterFormProps {
-  roles: Role[];
-  /** True when the roles API could not be reached. */
-  rolesUnavailable: boolean;
-}
-
-export default function RegisterForm({ roles, rolesUnavailable }: RegisterFormProps) {
+export default function RegisterForm() {
   const t = useTranslations("RegisterForm");
   const [state, formAction, isPending] = useActionState(
     registerUserAction,
@@ -65,7 +56,7 @@ export default function RegisterForm({ roles, rolesUnavailable }: RegisterFormPr
       name: field,
       value: values[field],
       error: errorFor(field),
-      onChange: (event: ChangeEvent<HTMLInputElement | HTMLSelectElement>) =>
+      onChange: (event: ChangeEvent<HTMLInputElement>) =>
         setValues((prev) => ({ ...prev, [field]: event.target.value })),
       onBlur: () => setTouched((prev) => ({ ...prev, [field]: true })),
     };
@@ -158,32 +149,6 @@ export default function RegisterForm({ roles, rolesUnavailable }: RegisterFormPr
           />
 
           <div>
-            <Select
-              {...fieldProps("roleId")}
-              label={t("roleLabel")}
-              icon={ShieldCheck}
-              disabled={rolesUnavailable}
-              required
-            >
-              <option value="" disabled>
-                {t("rolePlaceholder")}
-              </option>
-              {roles.map((role) => (
-                <option key={role.id} value={role.id} disabled={!role.isActive}>
-                  {role.isActive
-                    ? `${role.name} · ${role.description}`
-                    : `${role.name} (${t("roleInactive")})`}
-                </option>
-              ))}
-            </Select>
-            {rolesUnavailable && (
-              <p role="alert" className="mt-1.5 text-sm text-red-500">
-                {t("rolesUnavailable")}
-              </p>
-            )}
-          </div>
-
-          <div>
             <Input
               {...fieldProps("password")}
               label={t("passwordLabel")}
@@ -223,7 +188,7 @@ export default function RegisterForm({ roles, rolesUnavailable }: RegisterFormPr
             </div>
           )}
 
-          <Button type="submit" isLoading={isPending} disabled={rolesUnavailable}>
+          <Button type="submit" isLoading={isPending}>
             {isPending ? t("submitting") : t("submit")}
           </Button>
         </form>
