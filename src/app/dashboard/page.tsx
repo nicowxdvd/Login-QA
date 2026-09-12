@@ -1,10 +1,16 @@
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
 import { AUTH_COOKIE_NAME } from "@/app/api/login/route";
+import DashboardHeader from "@/components/dashboard/DashboardHeader";
+import ProgressCard from "@/components/dashboard/ProgressCard";
+import ResultsChart from "@/components/dashboard/ResultsChart";
+import Sidebar from "@/components/dashboard/Sidebar";
+import StatsGrid from "@/components/dashboard/StatsGrid";
+import TrendCard from "@/components/dashboard/TrendCard";
 
 /**
- * Minimal authenticated placeholder. Confirms the JWT issued by the login
- * flow was stored and is actually gating access to this route.
+ * Authenticated landing page shown after a successful login. Layout only:
+ * all figures are static placeholders.
  */
 export default async function DashboardPage() {
   const cookieStore = await cookies();
@@ -15,15 +21,18 @@ export default async function DashboardPage() {
   }
 
   return (
-    <main className="flex min-h-screen items-center justify-center bg-neutral-950 px-6 text-white">
-      <div className="text-center">
-        <h1 className="text-2xl font-semibold tracking-tight">
-          You are signed in
-        </h1>
-        <p className="mt-2 text-sm text-neutral-400">
-          This page is only reachable with a valid session cookie.
-        </p>
-      </div>
-    </main>
+    <div className="flex min-h-screen bg-neutral-950 text-white">
+      <Sidebar />
+
+      <main className="flex-1 space-y-6 px-6 py-8 sm:px-10 lg:px-12">
+        <DashboardHeader />
+        <StatsGrid />
+        <div className="grid grid-cols-1 gap-6 lg:grid-cols-3">
+          <ResultsChart />
+          <ProgressCard />
+          <TrendCard />
+        </div>
+      </main>
+    </div>
   );
 }
