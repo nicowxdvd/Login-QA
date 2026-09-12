@@ -13,6 +13,7 @@ import {
 } from "lucide-react";
 import { useTranslations } from "next-intl";
 import Link from "next/link";
+import LogoutButton from "./LogoutButton";
 
 interface NavItem {
   key: string;
@@ -84,6 +85,10 @@ export default function Sidebar() {
           })}
         </ul>
       </nav>
+
+      <div className="relative mt-auto border-t border-neutral-800 pt-4">
+        <LogoutButton />
+      </div>
     </aside>
   );
 }
