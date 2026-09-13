@@ -39,6 +39,8 @@
     "title": "User dashboard",
     "openMenu": "Open menu",
     "mainNav": "Main navigation",
+    "collapseSidebar": "Collapse menu",
+    "expandSidebar": "Expand menu",
     "logout": "Log out",
     "loggingOut": "Logging out...",
     "nav": {
