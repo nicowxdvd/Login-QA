@@ -17,7 +17,13 @@
     "signUp": "Sign up",
     "invalidCredentials": "Incorrect email or password",
     "networkError": "Could not reach the server. Check that the API is running",
-    "genericError": "Something went wrong signing in. Please try again"
+    "genericError": "Something went wrong signing in. Please try again",
+    "validationError": "Check that the email has a valid format",
+    "errors": {
+      "emailRequired": "Email is required",
+      "emailInvalid": "Email must be a valid address",
+      "passwordRequired": "Password is required"
+    }
   },
   "SocialButton": {
     "continueWith": "Continue with {provider}"
