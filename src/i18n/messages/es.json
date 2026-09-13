@@ -39,6 +39,8 @@
     "title": "Panel de usuario",
     "openMenu": "Abrir menú",
     "mainNav": "Navegación principal",
+    "collapseSidebar": "Minimizar menú",
+    "expandSidebar": "Expandir menú",
     "logout": "Cerrar sesión",
     "loggingOut": "Cerrando sesión...",
     "nav": {
