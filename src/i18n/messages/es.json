@@ -117,5 +117,23 @@
       "apiValidation": "La API rechazó los datos:",
       "generic": "Ocurrió un error al crear la cuenta. Intenta de nuevo"
     }
+  },
+  "ForgotPasswordForm": {
+    "title": "Recuperar contraseña",
+    "subtitle": "Ingresa tu correo electrónico y te enviaremos un enlace para restablecer tu contraseña.",
+    "emailLabel": "Correo electrónico",
+    "submit": "Enviar enlace",
+    "submitting": "Enviando...",
+    "successTitle": "Revisa tu correo",
+    "successMessage": "Si existe una cuenta con este correo, recibirás un enlace para restablecer tu contraseña en breve.",
+    "backToLogin": "Volver a iniciar sesión",
+    "haveAccount": "¿Recuerdas tu contraseña?",
+    "signIn": "Inicia sesión",
+    "errors": {
+      "emailRequired": "El correo es obligatorio",
+      "emailInvalid": "El correo debe tener un formato válido",
+      "network": "No se pudo conectar con el servidor. Verifica que la API esté corriendo",
+      "generic": "Ocurrió un error. Intenta de nuevo"
+    }
   }
 }
