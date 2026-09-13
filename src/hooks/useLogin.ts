@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useState } from "react";
+import { useCallback, useRef, useState } from "react";
 
 export type LoginErrorReason = "invalid-credentials" | "network" | "unknown";
 
@@ -19,8 +19,15 @@ interface UseLoginResult {
 export function useLogin(): UseLoginResult {
   const [isLoading, setIsLoading] = useState(false);
   const [errorReason, setErrorReason] = useState<LoginErrorReason | null>(null);
+  // Synchronous guard against double submits. Unlike `isLoading`, a ref updates
+  // immediately, so rapid clicks fired before the next render still see the lock.
+  const inFlightRef = useRef(false);
 
   const login = useCallback(async (email: string, password: string) => {
+    if (inFlightRef.current) {
+      return false;
+    }
+    inFlightRef.current = true;
     setIsLoading(true);
     setErrorReason(null);
 
@@ -32,6 +39,8 @@ export function useLogin(): UseLoginResult {
       });
 
       if (response.ok) {
+        // Keep the lock held: the caller navigates away on success, and
+        // releasing here would briefly re-open the window for a duplicate login.
         return true;
       }
 
@@ -42,14 +51,14 @@ export function useLogin(): UseLoginResult {
       } else {
         setErrorReason("unknown");
       }
-
-      return false;
     } catch {
       setErrorReason("network");
-      return false;
-    } finally {
-      setIsLoading(false);
     }
+
+    // Only reached on failure: release the lock so the user can retry.
+    inFlightRef.current = false;
+    setIsLoading(false);
+    return false;
   }, []);
 
   const clearError = useCallback(() => setErrorReason(null), []);
