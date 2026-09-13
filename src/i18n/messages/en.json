@@ -17,7 +17,13 @@
     "signUp": "Sign up",
     "invalidCredentials": "Incorrect email or password",
     "networkError": "Could not reach the server. Check that the API is running",
-    "genericError": "Something went wrong signing in. Please try again"
+    "genericError": "Something went wrong signing in. Please try again",
+    "validationError": "Check that the email has a valid format",
+    "errors": {
+      "emailRequired": "Email is required",
+      "emailInvalid": "Email must be a valid address",
+      "passwordRequired": "Password is required"
+    }
   },
   "SocialButton": {
     "continueWith": "Continue with {provider}"
@@ -33,6 +39,8 @@
     "title": "User dashboard",
     "openMenu": "Open menu",
     "mainNav": "Main navigation",
+    "collapseSidebar": "Collapse menu",
+    "expandSidebar": "Expand menu",
     "logout": "Log out",
     "loggingOut": "Logging out...",
     "nav": {
@@ -108,6 +116,24 @@
       "network": "Could not reach the server. Check that the API is running",
       "apiValidation": "The API rejected the data:",
       "generic": "Something went wrong creating the account. Please try again"
+    }
+  },
+  "ForgotPasswordForm": {
+    "title": "Reset your password",
+    "subtitle": "Enter your email address and we'll send you a link to reset your password.",
+    "emailLabel": "Email address",
+    "submit": "Reset password",
+    "submitting": "Resetting...",
+    "successTitle": "Check your email",
+    "successMessage": "If an account exists with this email, you'll receive a password reset link shortly.",
+    "backToLogin": "Back to sign in",
+    "haveAccount": "Remember your password?",
+    "signIn": "Sign in",
+    "errors": {
+      "emailRequired": "Email is required",
+      "emailInvalid": "Email must be a valid address",
+      "network": "Could not reach the server. Check that the API is running",
+      "generic": "Something went wrong. Please try again"
     }
   }
 }

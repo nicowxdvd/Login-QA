@@ -17,7 +17,13 @@
     "signUp": "Regístrate",
     "invalidCredentials": "Correo o contraseña incorrectos",
     "networkError": "No se pudo conectar con el servidor. Verifica que la API esté corriendo",
-    "genericError": "Ocurrió un error al iniciar sesión. Intenta de nuevo"
+    "genericError": "Ocurrió un error al iniciar sesión. Intenta de nuevo",
+    "validationError": "Revisa que el correo tenga un formato válido",
+    "errors": {
+      "emailRequired": "El correo es obligatorio",
+      "emailInvalid": "El correo debe tener un formato válido",
+      "passwordRequired": "La contraseña es obligatoria"
+    }
   },
   "SocialButton": {
     "continueWith": "Continuar con {provider}"
@@ -33,6 +39,8 @@
     "title": "Panel de usuario",
     "openMenu": "Abrir menú",
     "mainNav": "Navegación principal",
+    "collapseSidebar": "Minimizar menú",
+    "expandSidebar": "Expandir menú",
     "logout": "Cerrar sesión",
     "loggingOut": "Cerrando sesión...",
     "nav": {
@@ -108,6 +116,24 @@
       "network": "No se pudo conectar con el servidor. Verifica que la API esté corriendo",
       "apiValidation": "La API rechazó los datos:",
       "generic": "Ocurrió un error al crear la cuenta. Intenta de nuevo"
+    }
+  },
+  "ForgotPasswordForm": {
+    "title": "Recuperar contraseña",
+    "subtitle": "Ingresa tu correo electrónico y te enviaremos un enlace para restablecer tu contraseña.",
+    "emailLabel": "Correo electrónico",
+    "submit": "Recuperar contraseña",
+    "submitting": "Recuperando...",
+    "successTitle": "Revisa tu correo",
+    "successMessage": "Si existe una cuenta con este correo, recibirás un enlace para restablecer tu contraseña en breve.",
+    "backToLogin": "Volver a iniciar sesión",
+    "haveAccount": "¿Recuerdas tu contraseña?",
+    "signIn": "Inicia sesión",
+    "errors": {
+      "emailRequired": "El correo es obligatorio",
+      "emailInvalid": "El correo debe tener un formato válido",
+      "network": "No se pudo conectar con el servidor. Verifica que la API esté corriendo",
+      "generic": "Ocurrió un error. Intenta de nuevo"
     }
   }
 }

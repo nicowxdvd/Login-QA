@@ -1,8 +1,12 @@
 "use client";
 
-import { useCallback, useState } from "react";
+import { useCallback, useRef, useState } from "react";
 
-export type LoginErrorReason = "invalid-credentials" | "network" | "unknown";
+export type LoginErrorReason =
+  | "invalid-credentials"
+  | "validation"
+  | "network"
+  | "unknown";
 
 interface UseLoginResult {
   login: (email: string, password: string) => Promise<boolean>;
@@ -19,8 +23,15 @@ interface UseLoginResult {
 export function useLogin(): UseLoginResult {
   const [isLoading, setIsLoading] = useState(false);
   const [errorReason, setErrorReason] = useState<LoginErrorReason | null>(null);
+  // Synchronous guard against double submits. Unlike `isLoading`, a ref updates
+  // immediately, so rapid clicks fired before the next render still see the lock.
+  const inFlightRef = useRef(false);
 
   const login = useCallback(async (email: string, password: string) => {
+    if (inFlightRef.current) {
+      return false;
+    }
+    inFlightRef.current = true;
     setIsLoading(true);
     setErrorReason(null);
 
@@ -32,24 +43,30 @@ export function useLogin(): UseLoginResult {
       });
 
       if (response.ok) {
+        // Keep the lock held: the caller navigates away on success, and
+        // releasing here would briefly re-open the window for a duplicate login.
         return true;
       }
 
       if (response.status === 401) {
         setErrorReason("invalid-credentials");
+      } else if (response.status === 400) {
+        // Malformed credentials rejected by the schema (safety net; the form
+        // validates client-side first, so this rarely happens).
+        setErrorReason("validation");
       } else if (response.status === 502) {
         setErrorReason("network");
       } else {
         setErrorReason("unknown");
       }
-
-      return false;
     } catch {
       setErrorReason("network");
-      return false;
-    } finally {
-      setIsLoading(false);
     }
+
+    // Only reached on failure: release the lock so the user can retry.
+    inFlightRef.current = false;
+    setIsLoading(false);
+    return false;
   }, []);
 
   const clearError = useCallback(() => setErrorReason(null), []);
