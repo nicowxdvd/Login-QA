@@ -2,7 +2,11 @@
 
 import { useCallback, useRef, useState } from "react";
 
-export type LoginErrorReason = "invalid-credentials" | "network" | "unknown";
+export type LoginErrorReason =
+  | "invalid-credentials"
+  | "validation"
+  | "network"
+  | "unknown";
 
 interface UseLoginResult {
   login: (email: string, password: string) => Promise<boolean>;
@@ -46,6 +50,10 @@ export function useLogin(): UseLoginResult {
 
       if (response.status === 401) {
         setErrorReason("invalid-credentials");
+      } else if (response.status === 400) {
+        // Malformed credentials rejected by the schema (safety net; the form
+        // validates client-side first, so this rarely happens).
+        setErrorReason("validation");
       } else if (response.status === 502) {
         setErrorReason("network");
       } else {

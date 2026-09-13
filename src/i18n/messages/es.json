@@ -17,7 +17,13 @@
     "signUp": "Regístrate",
     "invalidCredentials": "Correo o contraseña incorrectos",
     "networkError": "No se pudo conectar con el servidor. Verifica que la API esté corriendo",
-    "genericError": "Ocurrió un error al iniciar sesión. Intenta de nuevo"
+    "genericError": "Ocurrió un error al iniciar sesión. Intenta de nuevo",
+    "validationError": "Revisa que el correo tenga un formato válido",
+    "errors": {
+      "emailRequired": "El correo es obligatorio",
+      "emailInvalid": "El correo debe tener un formato válido",
+      "passwordRequired": "La contraseña es obligatoria"
+    }
   },
   "SocialButton": {
     "continueWith": "Continuar con {provider}"
