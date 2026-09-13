@@ -7,7 +7,8 @@ import { useRouter } from "next/navigation";
 import { useState, type FormEvent } from "react";
 import Button from "@/components/ui/Button";
 import Input from "@/components/ui/Input";
-import SocialButton from "@/components/ui/SocialButton";
+// TODO: reactivar cuando se implemente el login social (Google/Apple).
+// import SocialButton from "@/components/ui/SocialButton";
 import { useLogin, type LoginErrorReason } from "@/hooks/useLogin";
 
 function errorMessageKey(reason: LoginErrorReason): string {
@@ -91,18 +92,24 @@ export default function LoginForm() {
           </Button>
         </form>
 
-        <div className="my-6 flex items-center gap-3">
-          <div className="h-px flex-1 bg-neutral-800" />
-          <span className="text-xs uppercase tracking-wide text-neutral-500">
-            {t("orRegisterWith")}
-          </span>
-          <div className="h-px flex-1 bg-neutral-800" />
-        </div>
+        {/*
+          TODO: login social deshabilitado temporalmente hasta implementar el
+          flujo OAuth de Google/Apple. Incluye el divisor "O regístrate con"
+          porque no tiene sentido mostrarlo sin los botones.
 
-        <div className="grid grid-cols-2 gap-3">
-          <SocialButton provider="google" />
-          <SocialButton provider="apple" />
-        </div>
+          <div className="my-6 flex items-center gap-3">
+            <div className="h-px flex-1 bg-neutral-800" />
+            <span className="text-xs uppercase tracking-wide text-neutral-500">
+              {t("orRegisterWith")}
+            </span>
+            <div className="h-px flex-1 bg-neutral-800" />
+          </div>
+
+          <div className="grid grid-cols-2 gap-3">
+            <SocialButton provider="google" />
+            <SocialButton provider="apple" />
+          </div>
+        */}
 
         <p className="mt-8 text-center text-sm text-neutral-400">
           {t("noAccount")}{" "}
